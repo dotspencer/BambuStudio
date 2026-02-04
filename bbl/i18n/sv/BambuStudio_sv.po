@@ -7536,6 +7536,14 @@ msgstr "Brittisk standard"
 msgid "Units"
 msgstr "Enheter"
 
+msgid "Use 12-hour time format"
+msgstr ""
+
+msgid "Show time as 6:10 PM instead of 18:10."
+msgstr ""
+
+
+
 msgid "Keep only one Bambu Studio instance"
 msgstr "Behåll endast en Bambu Studio instans"
 

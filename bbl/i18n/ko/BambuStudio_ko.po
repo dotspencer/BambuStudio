@@ -7529,6 +7529,14 @@ msgstr "인치법"
 msgid "Units"
 msgstr "단위"
 
+msgid "Use 12-hour time format"
+msgstr ""
+
+msgid "Show time as 6:10 PM instead of 18:10."
+msgstr ""
+
+
+
 msgid "Keep only one Bambu Studio instance"
 msgstr "Bambu Studio 인스턴스를 하나만 유지하세요"
 

@@ -7556,6 +7556,14 @@ msgstr "Imperialny"
 msgid "Units"
 msgstr "Jednostki"
 
+msgid "Use 12-hour time format"
+msgstr ""
+
+msgid "Show time as 6:10 PM instead of 18:10."
+msgstr ""
+
+
+
 msgid "Keep only one Bambu Studio instance"
 msgstr "Zachowaj tylko jedną instancję BambuStudio"
 
