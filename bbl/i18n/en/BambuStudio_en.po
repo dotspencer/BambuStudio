@@ -7475,8 +7475,8 @@ msgstr "Units"
 msgid "Use 12-hour time format"
 msgstr "Use 12-hour time format"
 
-msgid "Show time like 6:10 PM instead of 18:10."
-msgstr "Show time like 6:10 PM instead of 18:10."
+msgid "Show time as 6:10 PM instead of 18:10."
+msgstr "Show time as 6:10 PM instead of 18:10."
 
 msgid "Keep only one Bambu Studio instance"
 msgstr "Keep only one Bambu Studio instance"

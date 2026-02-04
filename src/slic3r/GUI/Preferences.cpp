@@ -1299,7 +1299,7 @@ wxWindow* PreferencesDialog::create_general_page()
     std::vector<wxString> Units         = {_L("Metric") + " (mm, g)", _L("Imperial") + " (in, oz)"};
     auto item_currency = create_item_combobox(_L("Units"), page, _L("Units"), "use_inches", Units,{"0","1"});
     auto item_time_format = create_item_checkbox(_L("Use 12-hour time format"), page,
-                                                 _L("Show time like 6:10 PM instead of 18:10."), 50,
+                                                 _L("Show time as 6:10 PM instead of 18:10."), 50,
                                                  "use_12h_time");
     auto item_single_instance = create_item_checkbox(_L("Keep only one Bambu Studio instance"), page,
 #if __APPLE__
