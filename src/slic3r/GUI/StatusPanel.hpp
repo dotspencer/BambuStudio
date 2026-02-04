@@ -340,6 +340,7 @@ private:
     Label* m_error_text;
     PrintingTaskType m_type;
     int m_brightness_value{ -1 };
+    int m_last_mc_left_time{ -1 };
 
 public:
     void init_bitmaps();
@@ -365,6 +366,7 @@ public:
     void update_left_time(wxString time);
     void update_finish_time(wxString finish_time);
     void update_left_time(int mc_left_time);
+    void refresh_finish_time_format();
     void show_layers_num(bool show) { m_staticText_layers->Show(show); }
     void update_layers_num(bool show, wxString num = wxEmptyString);
     void show_priting_use_info(bool show, wxString time = wxEmptyString, wxString weight = wxEmptyString);
@@ -787,6 +789,7 @@ protected:
     void update_misc_ctrl(MachineObject *obj);
     void update_ams(MachineObject* obj);
     void update_filament_loading_panel(MachineObject* obj);
+    void refresh_finish_time_format();
 
     void update_extruder_status(MachineObject* obj);
     void update_ams_control_state(std::string ams_id, std::string slot_id);

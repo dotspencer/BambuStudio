@@ -2,6 +2,7 @@
 #include "OptionsGroup.hpp"
 #include "GUI_App.hpp"
 #include "MainFrame.hpp"
+#include "Monitor.hpp"
 #include "Plater.hpp"
 #include "MsgDialog.hpp"
 #include "I18N.hpp"
@@ -850,6 +851,13 @@ wxBoxSizer *PreferencesDialog::create_item_checkbox(wxString title, wxWindow *pa
         else {
             app_config->set_bool(param, checkbox->GetValue());
             app_config->save();
+        }
+
+        if (param == "use_12h_time") {
+            if (wxGetApp().mainframe && wxGetApp().mainframe->m_monitor) {
+                auto* status_panel = wxGetApp().mainframe->m_monitor->get_status_panel();
+                if (status_panel) status_panel->refresh_finish_time_format();
+            }
         }
 
         if (param == "staff_pick_switch") {

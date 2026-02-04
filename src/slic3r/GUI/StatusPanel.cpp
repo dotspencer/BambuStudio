@@ -1087,6 +1087,7 @@ void PrintingTaskPanel::reset_printing_value()
     this->set_plate_index(-1);
     update_pausing_state(false);
     update_stopping_state(false);
+    m_last_mc_left_time = -1;
 }
 
 void PrintingTaskPanel::enable_partskip_button(MachineObject *obj, bool enable)
@@ -1260,6 +1261,7 @@ void PrintingTaskPanel::update_left_time(int mc_left_time)
     wxString    left_time_text = NA_STR;
 
     try {
+        m_last_mc_left_time = mc_left_time;
         left_time  = get_bbl_time_dhms(mc_left_time);
         const bool use_12h_time = wxGetApp().app_config && wxGetApp().app_config->get_bool("use_12h_time");
         right_time = get_bbl_finish_time_dhm(mc_left_time, use_12h_time);
@@ -1275,6 +1277,17 @@ void PrintingTaskPanel::update_left_time(int mc_left_time)
     if (s_mc_left_time != mc_left_time) {
         BOOST_LOG_TRIVIAL(info) << "PrintingTaskPanel::update_left_time: " << mc_left_time << ", " << left_time_text << ": " << right_time;
         s_mc_left_time = mc_left_time;
+    }
+}
+
+void PrintingTaskPanel::refresh_finish_time_format()
+{
+    if (m_last_mc_left_time < 0) return;
+    const bool use_12h_time = wxGetApp().app_config && wxGetApp().app_config->get_bool("use_12h_time");
+    try {
+        update_finish_time(get_bbl_finish_time_dhm(m_last_mc_left_time, use_12h_time));
+    } catch (...) {
+        return;
     }
 }
 
@@ -3595,6 +3608,13 @@ void StatusPanel::update_basic_print_data(bool def)
         m_project_task_panel->show_priting_use_info(true, prediction, weight);
     } else {
         m_project_task_panel->show_priting_use_info(false, "0m", "0g");
+    }
+}
+
+void StatusPanel::refresh_finish_time_format()
+{
+    if (m_project_task_panel) {
+        m_project_task_panel->refresh_finish_time_format();
     }
 }
 
