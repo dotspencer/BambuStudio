@@ -151,6 +151,8 @@ void AppConfig::set_defaults()
 
         if (get("use_inches").empty())
             set("use_inches", "0");
+        if (get("use_12h_time").empty())
+            set_bool("use_12h_time", false);
     }
     else {
 #ifdef _WIN32

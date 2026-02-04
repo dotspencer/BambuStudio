@@ -1261,7 +1261,8 @@ void PrintingTaskPanel::update_left_time(int mc_left_time)
 
     try {
         left_time  = get_bbl_time_dhms(mc_left_time);
-        right_time = get_bbl_finish_time_dhm(mc_left_time);
+        const bool use_12h_time = wxGetApp().app_config && wxGetApp().app_config->get_bool("use_12h_time");
+        right_time = get_bbl_finish_time_dhm(mc_left_time, use_12h_time);
     } catch (...) {
         ;
     }

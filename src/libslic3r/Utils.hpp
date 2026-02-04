@@ -800,7 +800,7 @@ inline std::string get_bbl_monitor_time_dhm(float time_in_secs)
     return buffer;
 }
 
-inline std::string get_bbl_finish_time_dhm(float time_in_secs)
+inline std::string get_bbl_finish_time_dhm(float time_in_secs, bool use_12h = false)
 {
     if (time_in_secs < 1) return "Finished";
     time_t   finish_time    = std::time(nullptr) + static_cast<time_t>(time_in_secs);
@@ -832,7 +832,14 @@ inline std::string get_bbl_finish_time_dhm(float time_in_secs)
     }
 
     std::ostringstream formattedTime;
-    formattedTime << std::setw(2) << std::setfill('0') << finish_hour << ":" << std::setw(2) << std::setfill('0') << finish_minute;
+    if (use_12h) {
+        int  hour_12 = finish_hour % 12;
+        if (hour_12 == 0) hour_12 = 12;
+        formattedTime << hour_12 << ":" << std::setw(2) << std::setfill('0') << finish_minute
+                      << (finish_hour >= 12 ? " PM" : " AM");
+    } else {
+        formattedTime << std::setw(2) << std::setfill('0') << finish_hour << ":" << std::setw(2) << std::setfill('0') << finish_minute;
+    }
     std::string finish_time_str = formattedTime.str();
     if (diff_day != 0) finish_time_str += "+" + std::to_string(diff_day);
 
